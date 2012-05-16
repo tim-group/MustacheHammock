@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.github.spullara.mustache.java', name: 'mustache.java', version: '0.7.7'
+}
