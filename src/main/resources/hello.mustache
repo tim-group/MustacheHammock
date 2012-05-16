@@ -1,5 +1,6 @@
 {{#var}}title = Hello World!{{/var}}
 {{#def}}content =
-	<p>This is the hello page; its title is {{title}}.</p>
+	<p>This is the hello page; its title is "{{title}}". We are saying hello on {{day}}.</p>
 {{/def}}
+{{#def}}greet = Hello {{input}}!{{/def}}
 {{> layout}}
