@@ -14,12 +14,13 @@ public class MustacheCompositionDemo {
     public static void main(String[] args) throws IOException {
         render("hello.mustache", new PrintWriter(System.out));
     }
-
+    
     private static void render(String template, PrintWriter output) throws IOException {
         MustacheFactory factory = new DefaultMustacheFactory();
         Mustache mustache = factory.compile(template);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("title", "Hello World");
+        map.put("var", new VarFunction(map));
+        
         mustache.execute(output, new Object[] {map}).flush();
     }
     
