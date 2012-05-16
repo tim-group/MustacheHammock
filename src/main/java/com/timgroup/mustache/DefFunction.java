@@ -13,10 +13,12 @@ import com.google.common.base.Function;
 public class DefFunction extends AssignmentFunction {
     
     private final MustacheFactory factory;
+    private final Object[] scopes;
 
-    public DefFunction(Map<String, Object> map, MustacheFactory factory) {
+    public DefFunction(Map<String, Object> map, MustacheFactory factory, Object[] scopes) {
         super(map);
         this.factory = factory;
+        this.scopes = scopes;
     }
     
     @Override
@@ -28,7 +30,7 @@ public class DefFunction extends AssignmentFunction {
                 // sadly, there is no way to write directly to the main writer
                 StringWriter buf = new StringWriter();
                 try {
-                    mustache.execute(buf, new Object[] {Collections.singletonMap("input", input), map}).flush();
+                    mustache.execute(buf, HammockMustache.prepend(Collections.singletonMap("input", input), scopes)).flush();
                 } catch (IOException e) {
                     throw new RuntimeException("error executing defined mustache: " + name + " = " + value, e);
                 }

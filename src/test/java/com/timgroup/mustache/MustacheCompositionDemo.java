@@ -2,6 +2,7 @@ package com.timgroup.mustache;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
@@ -16,7 +17,7 @@ public class MustacheCompositionDemo {
     private static void render(String template, PrintWriter output) throws IOException {
         MustacheFactory factory = new HammockedMustacheFactory(new DefaultMustacheFactory());
         Mustache mustache = factory.compile(template);
-        mustache.execute(output, new Object[] {}).flush();
+        mustache.execute(output, new Object[] {Collections.singletonMap("weather", "sunny")}).flush();
     }
     
 }

@@ -28,12 +28,12 @@ public class HammockMustache implements Mustache {
         Object[] augmentedScopes = prepend(augmentation, scopes);
         
         augmentation.put("var", new VarFunction(augmentation));
-        augmentation.put("def", new DefFunction(augmentation, factory));
+        augmentation.put("def", new DefFunction(augmentation, factory, augmentedScopes));
         
         return augmentedScopes;
     }
 
-    private Object[] prepend(Object object, Object[] array) {
+    public static Object[] prepend(Object object, Object[] array) {
         Object[] prepended = new Object[array.length + 1];
         prepended[0] = object;
         System.arraycopy(array, 0, prepended, 1, array.length);
