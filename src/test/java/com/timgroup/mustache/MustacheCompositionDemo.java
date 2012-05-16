@@ -2,8 +2,6 @@ package com.timgroup.mustache;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
@@ -16,13 +14,9 @@ public class MustacheCompositionDemo {
     }
     
     private static void render(String template, PrintWriter output) throws IOException {
-        MustacheFactory factory = new DefaultMustacheFactory();
+        MustacheFactory factory = new HammockedMustacheFactory(new DefaultMustacheFactory());
         Mustache mustache = factory.compile(template);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("var", new VarFunction(map));
-        map.put("def", new DefFunction(map, factory));
-        
-        mustache.execute(output, new Object[] {map}).flush();
+        mustache.execute(output, new Object[] {}).flush();
     }
     
 }
