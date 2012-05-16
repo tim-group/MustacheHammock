@@ -3,3 +3,4 @@ syntax: glob
 .gradle
 .project
 .settings/
+build

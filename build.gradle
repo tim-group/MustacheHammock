@@ -8,5 +8,11 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.github.spullara.mustache.java', name: 'mustache.java', version: '0.7.7'
+    compile group: 'com.github.spullara.mustache.java', name: 'compiler', version: '0.7.7'
+}
+
+eclipse {
+    classpath {
+        defaultOutputDir = new File(project.buildDir, 'eclipse')
+    }
 }
