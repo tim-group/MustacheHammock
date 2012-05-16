@@ -14,7 +14,7 @@ public class DefFunction extends AssignmentFunction {
     
     private final MustacheFactory factory;
     private final Object[] scopes;
-
+    
     public DefFunction(Map<String, Object> map, MustacheFactory factory, Object[] scopes) {
         super(map);
         this.factory = factory;

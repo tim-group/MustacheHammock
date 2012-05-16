@@ -29,7 +29,7 @@ public class HammockedMustacheFactory implements MustacheFactory {
     private Mustache wrap(Mustache mustache) {
         return new HammockMustache(mustache, delegate);
     }
-
+    
     @Override
     public MustacheVisitor createMustacheVisitor() {
         return delegate.createMustacheVisitor();
