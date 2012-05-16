@@ -20,6 +20,7 @@ public class MustacheCompositionDemo {
         Mustache mustache = factory.compile(template);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("var", new VarFunction(map));
+        map.put("def", new DefFunction(map));
         
         mustache.execute(output, new Object[] {map}).flush();
     }
